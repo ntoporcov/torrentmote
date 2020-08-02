@@ -1,0 +1,76 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+h1{
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+
+.toolbar{
+  height: initial;
+  min-height: 90px;
+  width: 100%;
+  position: fixed !important;
+  z-index: 100;
+
+  *{
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .right{
+    justify-content: flex-end;
+    padding: 0 10px 5px 0;
+  }
+
+  .left{
+    padding: 0 0 0 20px;
+  }
+}
+
+.tabWrapper{
+  position: fixed !important;
+  //pointer-events: none;
+
+  &.installed .tabbar{
+    padding-bottom: 30px !important;
+  }
+}
+
+.page__content{
+  background: red;
+  padding: 100px 20px !important;
+
+}
+
+.torrentBox{
+  background: white;
+  width: 100%;
+  border-radius: 15px;
+  padding:20px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
