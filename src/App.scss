@@ -80,8 +80,8 @@ h3{
   flex-direction: column;
   box-sizing: border-box;
   margin-bottom: 20px;
-  border-bottom: 1px solid $gray;
-  border-top: 1px solid $gray;
+  border-bottom: .5px solid $gray;
+  border-top: .5px solid $gray;
 
   h2{
     padding-bottom: 30px;
@@ -168,9 +168,10 @@ h3{
         font-size: 16px;
         margin-left: 5px;
         width: 70%;
+        background-color: transparent;
 
         &::placeholder{
-          color: $gray-light;
+          color: $gray;
         }
       }
 
