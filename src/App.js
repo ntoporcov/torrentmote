@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, createContext} from 'react';
 import { Page, Toolbar, ToolbarButton, Tabbar, Tab, Icon} from 'react-onsenui'; // Only import the necessary components
 import Torrents from './Components/Torrents';
 import Search from './Components/Search';
@@ -7,8 +7,21 @@ import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
 import './App.scss';
 import Settings from './Components/Settings';
+import { getStorage, saveStorage } from './utils/Storage';
 
-function App() {
+const StoredUser = getStorage("user")
+let templateObject = StoredUser;
+
+if(StoredUser === null){
+  templateObject = {
+    loggedin:false,
+  }
+  saveStorage("user",templateObject)
+}
+
+export const User = createContext(templateObject);
+
+const App = () => {
   const [activeTab,setActiveTab] = useState(0)
 
   const installed = window.matchMedia('(display-mode: standalone)').matches;
@@ -28,7 +41,7 @@ function App() {
           </h1>
         </div>
         <div className="right">
-          {activeTab === 0?
+          {activeTab && StoredUser.loggedin === true?
             <ToolbarButton>
               <Icon size={30} icon="md-plus" />
             </ToolbarButton>
@@ -43,7 +56,7 @@ function App() {
         index={activeTab}
         renderTabs={(activeIndex, tabbar) => [
           {
-            content: <Torrents title={pageTitles[0]} active={activeIndex === 0} tabbar={tabbar} />,
+            content: <Torrents title={pageTitles[0]} active={activeIndex === 0} tabbar={tabbar} loggedin={templateObject.loggedin} />,
             tab: <Tab label="Torrents" icon="md-download" />
           },
           {

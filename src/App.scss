@@ -1,3 +1,8 @@
+$blue : #0076ff;
+$gray-light : #e5e5e5;
+$gray : #b2b2b2;
+$offwhite: #fafafa;
+
 .App {
   text-align: center;
 }
@@ -24,6 +29,10 @@
 h1{
   margin-top:10px;
   margin-bottom: 10px;
+}
+
+h3{
+  margin:0 !important;
 }
 
 .toolbar{
@@ -59,18 +68,131 @@ h1{
 
 .page__content{
   background: red;
-  padding: 100px 20px !important;
+  padding: 110px 0 !important;
 
 }
 
 .torrentBox{
-  background: white;
+  background-color: $offwhite;
   width: 100%;
-  border-radius: 15px;
   padding:20px;
-  min-height: 100px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   margin-bottom: 20px;
+  border-bottom: 1px solid $gray;
+  border-top: 1px solid $gray;
+
+  h2{
+    padding-bottom: 30px;
+    max-height: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.centered{
+      text-align: center;
+    }
+  }
+
+  .stats{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+
+    > * {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    > *:first-child {
+      color: $blue;
+    }
+
+    > *:nth-child(2) {
+      color: $gray;
+    }
+  }
+
+  .buttonsRow{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+
+    button{
+      flex-grow: 2;
+      background: none;
+      border: none;
+    }
+
+    button:nth-child(2){
+      border-color: $gray-light;
+      border-style: solid;
+      border-width: 0 1px 0 1px;
+    }
+
+    button.active{
+      color: $blue;
+    }
+  }
+
+  &.login{
+    box-shadow: none;
+  }
+
+  .inputGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid $gray;
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+    label{
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px 10px;
+      font-size: 16px;
+      font-weight: bold;
+
+      span{
+        width: 25%;
+
+      }
+
+      input{
+        flex-grow: 6;
+        border:none;
+        font-size: 16px;
+        margin-left: 5px;
+        width: 70%;
+
+        &::placeholder{
+          color: $gray-light;
+        }
+      }
+
+    }
+
+    label:not(:first-child){
+      border-top: 1px solid $gray;
+    }
+  }
+
+  .headerToAdd{
+    padding:10px;
+    border-radius: 10px;
+    background-color: $gray-light;
+    display: block;
+  }
+
+  .feedback{
+    text-align: center;
+  }
+}
+
+.progress-bar__secondary{
+  background-color: $gray-light !important;
 }
